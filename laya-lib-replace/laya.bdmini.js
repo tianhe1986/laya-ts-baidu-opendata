@@ -1,5 +1,6 @@
 
 (function(window,document,Laya){
+	var swan = window.swan;
 	var __un=Laya.un,__uns=Laya.uns,__static=Laya.static,__class=Laya.class,__getset=Laya.getset,__newvec=Laya.__newvec;
 
 	var Browser=laya.utils.Browser,Event=laya.events.Event,EventDispatcher=laya.events.EventDispatcher;
@@ -249,7 +250,7 @@ var BMiniAdapter=(function(){
 			var fileMd5Name=fileObj.md5;
 			var fileNativeUrl=MiniFileMgr$1.getFileNativePath(fileMd5Name);
 			}else{
-			fileNativeUrl=textureUrl;
+			fileNativeUrl=URL.formatURL(textureUrl);
 		}
 		if(fileNativeUrl){
 			var openDataContext=BMiniAdapter.window.swan.getOpenDataContext();
@@ -608,6 +609,7 @@ var MiniFileMgr$1=(function(){
 	MiniFileMgr.fileNativeDir=null;
 	MiniFileMgr.fileListName="layaairfiles.txt";
 	MiniFileMgr.ziyuFileData={};
+	MiniFileMgr.ziyuFileTextureData={};
 	MiniFileMgr.loadPath="";
 	MiniFileMgr.DESCENDING=2;
 	MiniFileMgr.NUMERIC=16;
@@ -683,8 +685,16 @@ var MiniImage$1=(function(){
 					var fileMd5Name=fileObj.md5;
 					fileNativeUrl=MiniFileMgr$1.getFileNativePath(fileMd5Name);
 				}
-			}else
-			fileNativeUrl=sourceUrl;
+			}else{
+				if(BMiniAdapter.isZiYu){
+					var tempUrl=URL.formatURL(sourceUrl);
+					if(MiniFileMgr$1.ziyuFileTextureData[tempUrl]){
+						fileNativeUrl=MiniFileMgr$1.ziyuFileTextureData[tempUrl];
+					}else
+					fileNativeUrl=sourceUrl;
+				}else
+				fileNativeUrl=sourceUrl;
+			}
 			}else{
 			if(!isLocal)
 				fileNativeUrl=tempFilePath;
@@ -1066,7 +1076,10 @@ var MiniLoader$1=(function(_super){
 		var urlType=Utils.getFileExtension(url);
 		if ((MiniLoader._fileTypeArr.indexOf(urlType)!=-1)){
 			BMiniAdapter.EnvConfig.load.call(this,url,type,cache,group,ignoreCache);
-			}else {
+		}else {
+			if(BMiniAdapter.isZiYu && !MiniFileMgr$1.ziyuFileData[url]){
+				url=URL.formatURL(url);
+			}
 			if(BMiniAdapter.isZiYu && MiniFileMgr$1.ziyuFileData[url]){
 				var tempData=MiniFileMgr$1.ziyuFileData[url];
 				thisLoader.onLoaded(tempData);
