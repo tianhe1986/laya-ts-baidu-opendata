@@ -1,7 +1,6 @@
 var global = GameGlobal;
-var sharedCanvas = global.sharedCanvas = swan.getOpenDataContext().canvas;
+var sharedCanvas = global.sharedCanvas = swan.getSharedCanvas();
 
-sharedCanvas.__proto__.__proto__ = new window.HTMLElement('canvas');
 sharedCanvas.addEventListener = window.addEventListener;
 sharedCanvas.removeEventListener = window.removeEventListener;
 
