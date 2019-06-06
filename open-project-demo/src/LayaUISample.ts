@@ -11,18 +11,17 @@ class Main
 	public init():void
 	{
 		//初始化微信小游戏
-		Laya.BMiniAdapter.init(true, true);
+		(Laya as any).BMiniAdapter.init(true, true);
 		//程序入口
 		Laya.init(400, 400);
 		//现在子域一定不要设置适配
 		//Laya.stage.scaleMode = Laya.Stage.SCALE_FIXED_HEIGHT;
 		Laya.stage.screenMode = Laya.Stage.SCREEN_HORIZONTAL;
-		Laya.stage.alignV = Laya.Stage.ALIGN_CENTER;
-		Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
+		//Laya.stage.alignV = Laya.Stage.ALIGN_CENTER;
+		//Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
 		if (Laya.Browser.window.navigator.userAgent.indexOf('SwanGame') >= 0) {
 			let swan = Laya.Browser.window.swan;
 			swan.onMessage(data => {
-				let MiniFileMgr = (laya.bd.mini as any).MiniFileMgr;
 				//console.log(data);
 				if (data.cmd != undefined) {
 					if (data.cmd == "load") {
