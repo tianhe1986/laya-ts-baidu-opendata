@@ -33,9 +33,7 @@ var BMiniAdapter=(function(){
 			MiniFileMgr$1.setNativeFileDir("/layaairGame");
 			MiniFileMgr$1.existDir(MiniFileMgr$1.fileNativeDir,Handler.create(BMiniAdapter,BMiniAdapter.onMkdirCallBack));
 		}
-		if(!BMiniAdapter.isZiYu){
-			BMiniAdapter.systemInfo=BMiniAdapter.window.swan.getSystemInfoSync();
-		}
+		BMiniAdapter.systemInfo=BMiniAdapter.window.swan.getSystemInfoSync();
 		BMiniAdapter.window.focus=function (){
 		};
 		Laya['getUrlPath']=function (){
