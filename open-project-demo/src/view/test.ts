@@ -13,7 +13,9 @@ module view{
 			swan.getUserInfo({
 				swanIdList: ['selfSwanId'],
 				success: (res) => {
-					console.log(res.data);
+					//console.log(res.data);
+					this.avatar.skin = res.data[0].avatarUrl;
+					this.nickname.text = res.data[0].nickname;
 				},
 				fail: res => console.log(res)
 			});
