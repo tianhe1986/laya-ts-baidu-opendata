@@ -4,8 +4,8 @@ import Handler = Laya.Handler;
 import Loader = Laya.Loader;
 import WebGL = Laya.WebGL;
 
-//初始化微信小游戏
-Laya.BMiniAdapter.init(true, false);
+//初始化百度小游戏
+(Laya as any).BMiniAdapter.init(true, false);
 //程序入口
 Laya.init(1334, 750);
 Laya.stage.scaleMode = Laya.Stage.SCALE_FIXED_HEIGHT;
@@ -30,7 +30,7 @@ function beginLoad(){
 
 function onLoaded(): void {
 	//实例UI界面
-	(Laya.BMiniAdapter as any).sendAtlasToOpenDataContext("res/atlas/comp.atlas");
+	(Laya as any).BMiniAdapter.sendAtlasToOpenDataContext("res/atlas/comp.atlas");
 	var testUI: view.test = new view.test();
 	Laya.stage.addChild(testUI);
 	swan.getOpenDataContext().postMessage({

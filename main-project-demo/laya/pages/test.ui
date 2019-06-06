@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":4,
+    "selecteID":5,
     "props":{"width":1334,"sceneColor":"#000000","height":750},
     "nodeParent":-1,
     "label":"View",
@@ -28,7 +28,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":189,"x":263,"width":137,"var":"showButton","skin":"comp/button.png","labelSize":16,"labelFont":"Microsoft YaHei","label":"点我展示开放域","height":44},
+            "props":{"y":117,"x":52,"width":318,"var":"showButton","skin":"comp/button.png","labelSize":32,"labelFont":"Microsoft YaHei","label":"点我展示/隐藏开放域","height":91},
             "nodeParent":1,
             "label":"Button(showButton)",
             "isDirectory":false,
@@ -41,7 +41,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":188,"x":465,"width":137,"var":"dataButton","skin":"comp/button.png","labelSize":16,"labelFont":"Microsoft YaHei","label":"点我传递数据","height":44},
+            "props":{"y":188,"x":465,"width":287,"var":"dataButton","skin":"comp/button.png","labelSize":32,"labelFont":"Microsoft YaHei","label":"点我传递数据","height":74},
             "nodeParent":1,
             "label":"Button(dataButton)",
             "isDirectory":false,
@@ -54,7 +54,7 @@
         {
             "x":15,
             "type":"TextInput",
-            "props":{"y":134,"x":481,"width":137,"var":"inputText","skin":"comp/textinput.png","height":35,"fontSize":18,"font":"Microsoft YaHei"},
+            "props":{"y":110,"x":481,"width":236,"var":"inputText","skin":"comp/textinput.png","height":59,"fontSize":32,"font":"Microsoft YaHei"},
             "nodeParent":1,
             "label":"TextInput(inputText)",
             "isDirectory":false,
