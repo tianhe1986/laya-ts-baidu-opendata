@@ -55448,7 +55448,7 @@ var ui;
             _super.prototype.createChildren.call(this);
             this.createView(ui.testUI.uiView);
         };
-        testUI.uiView = { "type": "View", "props": { "width": 400, "height": 400 }, "child": [{ "type": "Image", "props": { "y": 117, "x": 35, "skin": "comp/image.png" } }, { "type": "Text", "props": { "y": 54, "x": 94, "var": "showText", "text": "gogogo", "fontSize": 24, "color": "#ffffff" } }] };
+        testUI.uiView = { "type": "View", "props": { "width": 400, "height": 400 }, "child": [{ "type": "Image", "props": { "y": 117, "x": 35, "skin": "comp/image.png" } }, { "type": "Text", "props": { "y": 30, "x": 21, "var": "showText", "text": "gogogo", "fontSize": 50, "color": "#ffffff" } }, { "type": "Image", "props": { "y": 106, "x": 240, "width": 100, "var": "avatar", "height": 100 } }, { "type": "Text", "props": { "y": 255, "x": 206, "var": "nickname", "fontSize": 50, "color": "#ffffff" } }] };
         return testUI;
     }(View));
     ui.testUI = testUI;
@@ -55478,6 +55478,14 @@ var view;
             return _this;
         }
         test.prototype.initOpenData = function () {
+            var swan = Laya.Browser.window.swan;
+            swan.getUserInfo({
+                swanIdList: ['selfSwanId'],
+                success: function (res) {
+                    console.log(res.data);
+                },
+                fail: function (res) { return console.log(res); }
+            });
         };
         return test;
     }(ui.testUI));
@@ -55501,12 +55509,11 @@ var Main = /** @class */ (function () {
         //现在子域一定不要设置适配
         //Laya.stage.scaleMode = Laya.Stage.SCALE_FIXED_HEIGHT;
         Laya.stage.screenMode = Laya.Stage.SCREEN_HORIZONTAL;
-        Laya.stage.alignV = Laya.Stage.ALIGN_CENTER;
-        Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
+        //Laya.stage.alignV = Laya.Stage.ALIGN_CENTER;
+        //Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
         if (Laya.Browser.window.navigator.userAgent.indexOf('SwanGame') >= 0) {
             var swan = Laya.Browser.window.swan;
             swan.onMessage(function (data) {
-                var MiniFileMgr = laya.bd.mini.MiniFileMgr;
                 //console.log(data);
                 if (data.cmd != undefined) {
                     if (data.cmd == "load") {
